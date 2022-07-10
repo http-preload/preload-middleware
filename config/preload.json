@@ -1,0 +1,18 @@
+{
+  "$schema": "../../manifest/preload-v1.schema.json",
+  "manifestVersion": 1,
+  "conditions": {
+    "supportsModulepreload": "(userAgentData, headers) => userAgentData.brands.some((e)=>e.brand==='Chromium'&&parseInt(e.version)>=66)"
+  },
+  "resources": {
+    "/index.html": [
+      {"rel": "preload", "href": "/assets/index.css", "as": "style"}
+    ],
+    "/index.html supportsModulepreload": [
+      {"rel": "modulepreload", "href": "/src/foobar.js"},
+      {"rel": "modulepreload", "href": "/lib/foo.js"},
+      {"rel": "modulepreload", "href": "/lib/bar.js"},
+      {"rel": "modulepreload", "href": "/src/qux.js"}
+    ]
+  }
+}

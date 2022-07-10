@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true
+  },
+  "ignorePatterns": [
+    "dist/**/*.js"
+  ],
+  "overrides": [
+    {
+      "files": ["*.config.js", "server.js", "server/*.js", "config/**/*.js"],
+      "env": {
+        "node": true
+      },
+      "globals": {
+        "process": true,
+        "global": true
+      }
+    }
+  ]
+}
