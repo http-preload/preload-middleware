@@ -157,7 +157,7 @@ function serveStaticPreload(options) {
       }
       let d = new Date(curr.mtime.valueOf());
       d.setTime(d.getTime() - d.getTimezoneOffset() * 60000);
-      console.log('[' + d.toISOString().slice(0, 19) + '] Reloading file ' + manifestFile);
+      console.info('[' + d.toISOString().slice(0, 19) + '] Reloading file ' + manifestFile);
       manifest = new PreloadManifest(JSON.parse(fs.readFileSync(manifestFile, {encoding: 'utf-8'})));
     });
   }
@@ -220,7 +220,7 @@ class Preload {
         }
         let d = new Date(curr.mtime.valueOf());
         d.setTime(d.getTime() - d.getTimezoneOffset() * 60000);
-        console.log('[' + d.toISOString().slice(0, 19) + '] Reloading file ' + manifestFile);
+        console.info('[' + d.toISOString().slice(0, 19) + '] Reloading file ' + manifestFile);
         manifest = new PreloadManifest(JSON.parse(fs.readFileSync(manifestFile, {encoding: 'utf-8'})));
       });
     }

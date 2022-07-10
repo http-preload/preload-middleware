@@ -175,7 +175,6 @@ class PreloadManifest {
             expr = constructFunction(args);
           }
         }
-        console.log(expr.toString());
         if (typeof expr === 'function') {
           functions[name] = expr;
         } else {
