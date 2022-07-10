@@ -14,7 +14,7 @@ Prepare a preload manifest file, e.g.
 
 ```json
 {
-  "$schema": "https://github.com/fuweichin/http-preload/manifest/preload-v1.schema.json",
+  "$schema": "https://raw.githubusercontent.com/http-preload/manifest/master/preload-v1.schema.json",
   "manifestVersion": 1,
   "conditions": {
     "supportsModulepreload": "(userAgentData, headers) => userAgentData.brands.some((e)=>e.brand==='Chromium'&&parseInt(e.version)>=66)"
@@ -104,7 +104,7 @@ export default {
 
 ## Examples
 
-You can find a complete example application in preload-middleware [source repo](https://github.com/fuweichin/http-preload/preload-middleware)
+You can find a complete example application in preload-middleware [source repo](https://github.com/http-preload/preload-middleware)
 
 ## License
 
