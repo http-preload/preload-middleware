@@ -11,8 +11,6 @@ function createApp({http2} = {}) {
     setHeaders: serveStaticPreload({
       manifestFile: './config/preload.json',
       watch: true,
-      joinHeaderValues: false,
-      prefersEarlyHints: true,
     }),
   }));
   return app;

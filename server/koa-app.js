@@ -9,7 +9,8 @@ function createApp() {
     maxage: 3,
     gzip: false,
     setHeaders: serveStaticPreload({
-      manifestFile: './config/preload.json'
+      manifestFile: './config/preload.json',
+      watch: true,
     }),
   }));
   return app.callback();

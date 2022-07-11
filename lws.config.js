@@ -18,6 +18,5 @@ export default {
   preload: {
     manifestFile: './config/preload.json',
     watch: true,
-    prefersEarlyHints: true,
   },
 };

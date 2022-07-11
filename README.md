@@ -33,7 +33,7 @@ Prepare a preload manifest file, e.g.
 }
 ```
 
-### Express Usage
+### For express
 
 ```sh
 npm install --save-dev express
@@ -48,13 +48,11 @@ app.use('/', express.static('./public', {
   setHeaders: serveStaticPreload({
     manifestFile: './config/preload.json',
     watch: true,
-    joinHeaderValues: false,
-    prefersEarlyHints: true,
   }),
 }));
 ```
 
-### Koa Usage
+### For koa
 
 ```sh
 npm install --save-dev koa koa-static
@@ -68,12 +66,13 @@ import {serveStaticPreload} from 'preload-middleware';
 let app = new Koa();
 app.use(koaStatic('./public', {
   setHeaders: serveStaticPreload({
-    manifestFile: './config/preload.json'
+    manifestFile: './config/preload.json',
+    watch: true,
   }),
 }));
 ```
 
-### Local Web Server Usage
+### For local-web-server
 
 Edit lws.config.js
 
@@ -92,19 +91,37 @@ export default {
   ],
   // options for preload-middleware
   preload: {
-    manifestFile: './config/preload.json',
-    watch: true,
-    prefersEarlyHints: true,
+    manifestFile: './config/preload.json'
   },
 };
 
 ```
 
+### Middleware Options
+
++ `manifestFile`:string
+
+  path to preload manifest file
+
++ `watch`:boolean default `false`
+
+  whether to watch the manifest file and hot reload
+
++ `index`:string default `"index.html"`
+
+  should be same as serve-index, or koa-static
+
++ `prefersEarlyHints`:boolean default `false`
+
+  if configured to be `true`, and user-agent supports 103 Early Hints, then links will be sent with status 103.
+
 
 
 ## Examples
 
-You can find a complete example application in preload-middleware [source repo](https://github.com/http-preload/preload-middleware)
+You can find a complete example application in [preload-middleware GitHub repo](https://github.com/http-preload/preload-middleware).
+
+
 
 ## License
 

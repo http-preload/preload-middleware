@@ -1,6 +1,6 @@
 {
   "name": "preload-middleware",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HTTP Preload / Resource Hints / Early Hints support for express, koa and local-web-server",
   "keywords": [
     "preload",
