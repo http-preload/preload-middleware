@@ -125,4 +125,4 @@ You can find a complete example application in [preload-middleware GitHub repo](
 
 ## License
 
-[Apache License 2.0](./LICENSE)
+[MIT](./LICENSE)
