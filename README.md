@@ -14,21 +14,20 @@ Prepare a preload manifest file, e.g.
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/http-preload/manifest/master/preload-v1.schema.json",
   "manifestVersion": 1,
-  "conditions": {
-    "supportsModulepreload": "(userAgentData, headers) => userAgentData.brands.some((e)=>e.brand==='Chromium'&&parseInt(e.version)>=66)"
-  },
   "resources": {
-    "/index.html": [
-      {"rel": "preload", "href": "/assets/index.css", "as": "style"}
-    ],
-    "/index.html supportsModulepreload": [
-      {"rel": "modulepreload", "href": "/src/foobar.js"},
-      {"rel": "modulepreload", "href": "/lib/foo.js"},
-      {"rel": "modulepreload", "href": "/lib/bar.js"},
-      {"rel": "modulepreload", "href": "/src/qux.js"}
-    ]
+    "/index.html": {
+      "Link": [
+        "<./assets/index.css>;rel=preload;as=style",
+        "<./src/foobar.js>;rel=modulepreload",
+        "</lib/foo.js>;rel=modulepreload",
+        "</lib/bar.js>;rel=modulepreload",
+        "<./src/qux.js>;rel=modulepreload;fetchpriority=low"
+      ]
+    },
+    "/alternate.xhtml": {
+      "Link": "<./src/foobar.js>;rel=modulepreload, </lib/foo.js>;rel=modulepreload, </lib/bar.js>;rel=modulepreload, <./src/qux.js>;rel=modulepreload;fetchpriority=low"
+    }
   }
 }
 ```
@@ -107,13 +106,14 @@ export default {
 
   whether to watch the manifest file and hot reload
 
-+ `index`:string default `"index.html"`
++ `index`:string default `"index.html"` (only for local-web-server)
 
   should be same as serve-index, or koa-static
 
 + `prefersEarlyHints`:boolean default `false`
 
-  if configured to be `true`, and user-agent supports 103 Early Hints, then links will be sent with status 103.
+  if configured to be `true`, and user-agent supports 103 Early Hints, then links will be sent with status 103. 
+  Note: Chrome doesn't yet support 103 Early Hints over HTTP/2, see https://issues.chromium.org/issues/40496584
 
 
 

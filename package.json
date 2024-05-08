@@ -1,6 +1,6 @@
 {
   "name": "preload-middleware",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "HTTP Preload / Resource Hints / Early Hints support for express, koa and local-web-server",
   "keywords": [
     "preload",
@@ -11,31 +11,23 @@
   ],
   "author": "Fuwei Chin",
   "license": "MIT",
-  "main": "dist/index.cjs",
+  "main": "src/index.js",
   "type": "module",
-  "exports": {
-    "import": "./src/index.js",
-    "require": "./dist/index.cjs"
-  },
   "engines": {
     "node": ">=14.17"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.js",
     "start": "node server.js",
-    "start-lws": "ws -c lws.config.js",
-    "link-self": "npm-link-self"
+    "start-lws": "ws -c lws.config.js"
   },
   "devDependencies": {
     "express": "^4.18.1",
     "http2-express-bridge": "^1.0.7",
     "koa": "^2.13.4",
-    "koa-static": "^5.0.0",
-    "npm-link-self": "^0.1.0"
+    "koa-static": "^5.0.0"
   },
   "files": [
     "src",
-    "dist",
     "README.md"
   ],
   "repository": {
