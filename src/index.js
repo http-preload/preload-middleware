@@ -30,7 +30,6 @@ function sendEarlyHints(res, headers) {
     if (!stream)
       return false;
     if (!stream.headersSent && !stream.state.closed) {
-      console.log('send http2 early hints');
       stream.additionalHeaders({':status': 103, ...headers});
       return true;
     }
@@ -103,13 +102,10 @@ function serveStaticPreload(options) {
       let headers =  manifest.resources[reqPath];
       sendHeader: if (headers) {
         if (prefersEarlyHints && supportsEarlyHints(req)) {
-          console.log('sending EarlyHints');
           if (sendEarlyHints(res, headers)) {
-            console.log('sent EarlyHints');
             break sendHeader;
           }
         }
-        console.log('Failed to sendEarlyHints');
         for (let name in headers) {
           res.setHeader(name, '' + headers[name]);
         }
